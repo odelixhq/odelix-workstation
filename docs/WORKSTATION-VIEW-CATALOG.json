@@ -1,0 +1,511 @@
+{
+  "status": "PROPOSED_DOCUMENTATION_CATALOG_NOT_IMPLEMENTED",
+  "source": "reference/source-r10/odelix-workstation/reference/emacs-architecture-revision-v2.md",
+  "mapping_rule": "legacy major mode -> proposed view.<mode without -mode>; logical semantics retained, not Emacs runtime",
+  "views": [
+    {
+      "legacy_mode": "market-dashboard-mode",
+      "view_id": "view.market-dashboard",
+      "group": "Global/attention buffers",
+      "content": "regime delta, watchlist, risk strip, Thesis deltas",
+      "source_line": 860
+    },
+    {
+      "legacy_mode": "attention-queue-mode",
+      "view_id": "view.attention-queue",
+      "group": "Global/attention buffers",
+      "content": "material notifications, wakes, stale evidence",
+      "source_line": 861
+    },
+    {
+      "legacy_mode": "notification-detail-mode",
+      "view_id": "view.notification-detail",
+      "group": "Global/attention buffers",
+      "content": "trigger, related objects, reason",
+      "source_line": 862
+    },
+    {
+      "legacy_mode": "data-health-mode",
+      "view_id": "view.data-health",
+      "group": "Global/attention buffers",
+      "content": "feed freshness, gaps, venue quality",
+      "source_line": 863
+    },
+    {
+      "legacy_mode": "calendar-catalyst-mode",
+      "view_id": "view.calendar-catalyst",
+      "group": "Global/attention buffers",
+      "content": "expiries, macro/news calendar",
+      "source_line": 864
+    },
+    {
+      "legacy_mode": "market-state-mode",
+      "view_id": "view.market-state",
+      "group": "Market and visualization buffers",
+      "content": "canonical snapshot, freshness, provenance",
+      "source_line": 870
+    },
+    {
+      "legacy_mode": "market-chart-mode",
+      "view_id": "view.market-chart",
+      "group": "Market and visualization buffers",
+      "content": "price, volume, levels, evidence, scenarios",
+      "source_line": 871
+    },
+    {
+      "legacy_mode": "market-profile-mode",
+      "view_id": "view.market-profile",
+      "group": "Market and visualization buffers",
+      "content": "volume/TPO/liquidity profile",
+      "source_line": 872
+    },
+    {
+      "legacy_mode": "market-comparison-mode",
+      "view_id": "view.market-comparison",
+      "group": "Market and visualization buffers",
+      "content": "synchronized instruments/venues",
+      "source_line": 873
+    },
+    {
+      "legacy_mode": "market-event-mode",
+      "view_id": "view.market-event",
+      "group": "Market and visualization buffers",
+      "content": "material event detail",
+      "source_line": 874
+    },
+    {
+      "legacy_mode": "annotation-ledger-mode",
+      "view_id": "view.annotation-ledger",
+      "group": "Market and visualization buffers",
+      "content": "drawings with authors/provenance",
+      "source_line": 875
+    },
+    {
+      "legacy_mode": "footprint-mode",
+      "view_id": "view.footprint",
+      "group": "Order flow and liquidity buffers",
+      "content": "bid/ask volume, imbalance, delta",
+      "source_line": 881
+    },
+    {
+      "legacy_mode": "liquidity-heatmap-mode",
+      "view_id": "view.liquidity-heatmap",
+      "group": "Order flow and liquidity buffers",
+      "content": "historical depth/liquidity migration",
+      "source_line": 882
+    },
+    {
+      "legacy_mode": "dom-mode",
+      "view_id": "view.dom",
+      "group": "Order flow and liquidity buffers",
+      "content": "aggregated depth and queue context",
+      "source_line": 883
+    },
+    {
+      "legacy_mode": "tape-mode",
+      "view_id": "view.tape",
+      "group": "Order flow and liquidity buffers",
+      "content": "filtered trades, blocks, liquidations",
+      "source_line": 884
+    },
+    {
+      "legacy_mode": "cvd-mode",
+      "view_id": "view.cvd",
+      "group": "Order flow and liquidity buffers",
+      "content": "venue/side cumulative delta",
+      "source_line": 885
+    },
+    {
+      "legacy_mode": "flow-comparison-mode",
+      "view_id": "view.flow-comparison",
+      "group": "Order flow and liquidity buffers",
+      "content": "spot/perp and venue contributions",
+      "source_line": 886
+    },
+    {
+      "legacy_mode": "liquidations-mode",
+      "view_id": "view.liquidations",
+      "group": "Order flow and liquidity buffers",
+      "content": "clusters, cascades, provenance",
+      "source_line": 887
+    },
+    {
+      "legacy_mode": "perpetuals-state-mode",
+      "view_id": "view.perpetuals-state",
+      "group": "Perpetuals and derivatives buffers",
+      "content": "OI, funding, basis, leverage state",
+      "source_line": 895
+    },
+    {
+      "legacy_mode": "oi-map-mode",
+      "view_id": "view.oi-map",
+      "group": "Perpetuals and derivatives buffers",
+      "content": "OI across venues/instruments",
+      "source_line": 896
+    },
+    {
+      "legacy_mode": "basis-mode",
+      "view_id": "view.basis",
+      "group": "Perpetuals and derivatives buffers",
+      "content": "curve, annualized basis, venue spread",
+      "source_line": 897
+    },
+    {
+      "legacy_mode": "funding-mode",
+      "view_id": "view.funding",
+      "group": "Perpetuals and derivatives buffers",
+      "content": "current/forecast/history",
+      "source_line": 898
+    },
+    {
+      "legacy_mode": "leverage-events-mode",
+      "view_id": "view.leverage-events",
+      "group": "Perpetuals and derivatives buffers",
+      "content": "OI jumps, deleveraging, liquidation regimes",
+      "source_line": 899
+    },
+    {
+      "legacy_mode": "options-overview-mode",
+      "view_id": "view.options-overview",
+      "group": "Options buffers",
+      "content": "expiry map, IV regime, skew, flow summary",
+      "source_line": 905
+    },
+    {
+      "legacy_mode": "options-chain-mode",
+      "view_id": "view.options-chain",
+      "group": "Options buffers",
+      "content": "bid/ask/IV/OI/volume/Greeks",
+      "source_line": 906
+    },
+    {
+      "legacy_mode": "options-surface-mode",
+      "view_id": "view.options-surface",
+      "group": "Options buffers",
+      "content": "vol surface, term, skew/smile",
+      "source_line": 907
+    },
+    {
+      "legacy_mode": "options-flow-mode",
+      "view_id": "view.options-flow",
+      "group": "Options buffers",
+      "content": "trades, blocks, direction assumptions",
+      "source_line": 908
+    },
+    {
+      "legacy_mode": "options-exposure-mode",
+      "view_id": "view.options-exposure",
+      "group": "Options buffers",
+      "content": "scenario bands, assumptions, sensitivities",
+      "source_line": 909
+    },
+    {
+      "legacy_mode": "expiry-mode",
+      "view_id": "view.expiry",
+      "group": "Options buffers",
+      "content": "strikes, pin/settlement context, timeline",
+      "source_line": 910
+    },
+    {
+      "legacy_mode": "investigation-mode",
+      "view_id": "view.investigation",
+      "group": "Evidence and reasoning buffers",
+      "content": "question, scope, runs, outcome",
+      "source_line": 918
+    },
+    {
+      "legacy_mode": "evidence-ledger-mode",
+      "view_id": "view.evidence-ledger",
+      "group": "Evidence and reasoning buffers",
+      "content": "evidence for/against, freshness, provenance",
+      "source_line": 919
+    },
+    {
+      "legacy_mode": "evidence-detail-mode",
+      "view_id": "view.evidence-detail",
+      "group": "Evidence and reasoning buffers",
+      "content": "payload/method/source/links",
+      "source_line": 920
+    },
+    {
+      "legacy_mode": "claim-ledger-mode",
+      "view_id": "view.claim-ledger",
+      "group": "Evidence and reasoning buffers",
+      "content": "observed/derived/inferred/assumed claims",
+      "source_line": 921
+    },
+    {
+      "legacy_mode": "claim-detail-mode",
+      "view_id": "view.claim-detail",
+      "group": "Evidence and reasoning buffers",
+      "content": "support, objections, revisions",
+      "source_line": 922
+    },
+    {
+      "legacy_mode": "critic-mode",
+      "view_id": "view.critic",
+      "group": "Evidence and reasoning buffers",
+      "content": "alternatives, missing evidence, verdict",
+      "source_line": 923
+    },
+    {
+      "legacy_mode": "source-browser-mode",
+      "view_id": "view.source-browser",
+      "group": "Evidence and reasoning buffers",
+      "content": "citations/data provenance, not generic web browser",
+      "source_line": 924
+    },
+    {
+      "legacy_mode": "thesis-mode",
+      "view_id": "view.thesis",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "summary, causal graph, lifecycle, invalidations",
+      "source_line": 930
+    },
+    {
+      "legacy_mode": "thesis-graph-mode",
+      "view_id": "view.thesis-graph",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "nodes/edges/evidence relations",
+      "source_line": 931
+    },
+    {
+      "legacy_mode": "thesis-diff-mode",
+      "view_id": "view.thesis-diff",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "exact semantic changes",
+      "source_line": 932
+    },
+    {
+      "legacy_mode": "scenario-mode",
+      "view_id": "view.scenario",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "conditions, path, signals, implications",
+      "source_line": 933
+    },
+    {
+      "legacy_mode": "scenario-compare-mode",
+      "view_id": "view.scenario-compare",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "side-by-side discriminating evidence",
+      "source_line": 934
+    },
+    {
+      "legacy_mode": "watcher-mode",
+      "view_id": "view.watcher",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "DSL, preview, triggers, notification policy",
+      "source_line": 935
+    },
+    {
+      "legacy_mode": "watcher-list-mode",
+      "view_id": "view.watcher-list",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "lifecycle, next evaluation, last wake",
+      "source_line": 936
+    },
+    {
+      "legacy_mode": "mission-mode",
+      "view_id": "view.mission",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "objective, state, budget, checkpoints",
+      "source_line": 937
+    },
+    {
+      "legacy_mode": "mission-list-mode",
+      "view_id": "view.mission-list",
+      "group": "Thesis, scenario and attention buffers",
+      "content": "portfolio of background work",
+      "source_line": 938
+    },
+    {
+      "legacy_mode": "trade-agent-mode",
+      "view_id": "view.trade-agent",
+      "group": "Agent and run buffers",
+      "content": "local session, input, answer, structured cards",
+      "source_line": 944
+    },
+    {
+      "legacy_mode": "agent-run-mode",
+      "view_id": "view.agent-run",
+      "group": "Agent and run buffers",
+      "content": "plan, tools, workers, budgets, outcome",
+      "source_line": 945
+    },
+    {
+      "legacy_mode": "agent-tool-mode",
+      "view_id": "view.agent-tool",
+      "group": "Agent and run buffers",
+      "content": "typed tool artifact with freshness",
+      "source_line": 946
+    },
+    {
+      "legacy_mode": "agent-sessions-mode",
+      "view_id": "view.agent-sessions",
+      "group": "Agent and run buffers",
+      "content": "resume/search/archive sessions",
+      "source_line": 947
+    },
+    {
+      "legacy_mode": "workspace-diff-mode",
+      "view_id": "view.workspace-diff",
+      "group": "Agent and run buffers",
+      "content": "proposed panes/lenses/annotations/actions",
+      "source_line": 948
+    },
+    {
+      "legacy_mode": "memory-inbox-mode",
+      "view_id": "view.memory-inbox",
+      "group": "Agent and run buffers",
+      "content": "proposed durable learnings",
+      "source_line": 949
+    },
+    {
+      "legacy_mode": "portfolio-mode",
+      "view_id": "view.portfolio",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "equity, exposure, concentration, limits",
+      "source_line": 957
+    },
+    {
+      "legacy_mode": "position-list-mode",
+      "view_id": "view.position-list",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "positions, linked Thesis, risk",
+      "source_line": 958
+    },
+    {
+      "legacy_mode": "position-mode",
+      "view_id": "view.position",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "lifecycle, expected/observed path, guard",
+      "source_line": 959
+    },
+    {
+      "legacy_mode": "risk-mode",
+      "view_id": "view.risk",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "shocks, budgets, utilization, stale inputs",
+      "source_line": 960
+    },
+    {
+      "legacy_mode": "proposal-list-mode",
+      "view_id": "view.proposal-list",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "drafts, approvals, expiry",
+      "source_line": 961
+    },
+    {
+      "legacy_mode": "proposal-review-mode",
+      "view_id": "view.proposal-review",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "exact immutable proposal and risk diff",
+      "source_line": 962
+    },
+    {
+      "legacy_mode": "order-intent-mode",
+      "view_id": "view.order-intent",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "authorized action before execution",
+      "source_line": 963
+    },
+    {
+      "legacy_mode": "orders-mode",
+      "view_id": "view.orders",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "authoritative order/fill state",
+      "source_line": 964
+    },
+    {
+      "legacy_mode": "kill-switch-mode",
+      "view_id": "view.kill-switch",
+      "group": "Portfolio, risk and execution buffers",
+      "content": "halt status and scoped controls",
+      "source_line": 965
+    },
+    {
+      "legacy_mode": "replay-mode",
+      "view_id": "view.replay",
+      "group": "Replay, review and learning buffers",
+      "content": "clock, controls, state, hidden future",
+      "source_line": 971
+    },
+    {
+      "legacy_mode": "episode-browser-mode",
+      "view_id": "view.episode-browser",
+      "group": "Replay, review and learning buffers",
+      "content": "cohorts, tags, difficulty, data quality",
+      "source_line": 972
+    },
+    {
+      "legacy_mode": "decision-journal-mode",
+      "view_id": "view.decision-journal",
+      "group": "Replay, review and learning buffers",
+      "content": "research/decisions/overrides",
+      "source_line": 973
+    },
+    {
+      "legacy_mode": "postmortem-mode",
+      "view_id": "view.postmortem",
+      "group": "Replay, review and learning buffers",
+      "content": "asOf decision quality and outcome",
+      "source_line": 974
+    },
+    {
+      "legacy_mode": "playbook-mode",
+      "view_id": "view.playbook",
+      "group": "Replay, review and learning buffers",
+      "content": "user-owned rules and candidates",
+      "source_line": 975
+    },
+    {
+      "legacy_mode": "eval-report-mode",
+      "view_id": "view.eval-report",
+      "group": "Replay, review and learning buffers",
+      "content": "scorecards, regressions, replay results",
+      "source_line": 976
+    },
+    {
+      "legacy_mode": "provider-settings-mode",
+      "view_id": "view.provider-settings",
+      "group": "Settings and extension buffers",
+      "content": "BYOK providers, role routing, status",
+      "source_line": 982
+    },
+    {
+      "legacy_mode": "capability-settings-mode",
+      "view_id": "view.capability-settings",
+      "group": "Settings and extension buffers",
+      "content": "tool/skill permissions",
+      "source_line": 983
+    },
+    {
+      "legacy_mode": "skill-browser-mode",
+      "view_id": "view.skill-browser",
+      "group": "Settings and extension buffers",
+      "content": "local/community/premium catalogue",
+      "source_line": 984
+    },
+    {
+      "legacy_mode": "connector-mode",
+      "view_id": "view.connector",
+      "group": "Settings and extension buffers",
+      "content": "data/broker/integration health",
+      "source_line": 985
+    },
+    {
+      "legacy_mode": "workspace-manager-mode",
+      "view_id": "view.workspace-manager",
+      "group": "Settings and extension buffers",
+      "content": "save/clone/share/reset",
+      "source_line": 986
+    },
+    {
+      "legacy_mode": "diagnostics-mode",
+      "view_id": "view.diagnostics",
+      "group": "Settings and extension buffers",
+      "content": "versions, logs with redaction, renderer status",
+      "source_line": 987
+    }
+  ]
+}

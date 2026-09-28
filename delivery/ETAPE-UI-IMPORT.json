@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "release": "r15.7",
+  "owner": "odelix-workstation",
+  "decision_id": "WKS-ETAPE-UI-2026-09-27",
+  "decision_status": "SELECTED_FOR_IMPLEMENTATION",
+  "decision_basis": "Уточнение пользователя в текущем диалоге: берём часть UX элементов eTape; указать конкретно что заимствуем и начать с selective fork.",
+  "scope": "SELECTIVE_UI_PORT_NOT_WHOLE_PRODUCT",
+  "source_repository": "earlisreal/eTape",
+  "source_commit": "79ee189069a85d3efc871bd5472de3135351d0e1",
+  "source_pin_role": "SELECTED_SOURCE_REVISION_NOT_INSTALLED_PACKAGE",
+  "implementation_status": "NOT_VERIFIED",
+  "source_import_performed_by_bundle": false,
+  "github_fork_created": false,
+  "runtime_acceptance": "NOT_RUN",
+  "performance": "UNMEASURED",
+  "license_policy": "Сохранить MIT copyright/license; зависимости и assets проверяются по exact files. Шрифты, branding и чужие инструкции AGENTS не импортируются автоматически.",
+  "fork_policy": "Локальный pinned checkout для чтения; выборочный перенос в существующий odelix-workstation. Не создавать публичный GitHub fork автоматически. В приватном repo хранить только разрешённый subset/provenance. Нет нового восьмого репозитория.",
+  "receipt_path": "vendor/etape-ui/SOURCE.json",
+  "receipt_required_fields": [
+    "upstream_repository",
+    "upstream_commit",
+    "source_path",
+    "source_blob_id",
+    "source_sha256",
+    "license_notice",
+    "destination_path",
+    "patch_sha256",
+    "tests",
+    "reviewer"
+  ],
+  "transitive_import_policy": "source_files — конкретные entrypoints, не разрешение копировать весь ui/src. WKS-018 перечисляет проверенную транзитивную зависимость каждого выбранного фрагмента и exact tests; каждый новый файл проходит review и receipt. Неизвестные hashes остаются unknown до получения bytes.",
+  "components": [
+    {
+      "id": "ET-01",
+      "name": "Shell, panel frame и реестр панелей",
+      "source_files": [
+        "ui/src/chrome/AppShell.tsx",
+        "ui/src/chrome/PanelFrame.tsx",
+        "ui/src/chrome/panels/registry.tsx"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/layout/adapters/dockview/WorkbenchShell.tsx",
+        "packages/panel-runtime/PanelFrame.tsx",
+        "packages/panel-runtime/registry.ts"
+      ],
+      "issue_ids": [
+        "ODX-WKS-003",
+        "ODX-WKS-011"
+      ],
+      "take": "Dockview composition, заголовок/фокус/resize/dispose панели, lifecycle и registry; только UI-фрагменты.",
+      "replace": "Наши ViewInstance/Scene/Command и Product WorkspacePort. AppShell целиком не переносится; exec hooks, venue setup, auto-unlock и demo lifecycle вырезаются."
+    },
+    {
+      "id": "ET-02",
+      "name": "Связывание инструментов между панелями",
+      "source_files": [
+        "ui/src/chrome/linkGroups.ts"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/link-groups/LinkGroups.ts"
+      ],
+      "issue_ids": [
+        "ODX-WKS-003"
+      ],
+      "take": "Механизм link-group и cross-window notifications без повторной рассылки.",
+      "replace": "Canonical instrument ID вместо symbol-only; generation guard при позднем ack; namespace каналов по tenant/user/workspace и очистка при logout. Engine FocusGroup заменяется нашей командой."
+    },
+    {
+      "id": "ET-03",
+      "name": "Планировщик отрисовки",
+      "source_files": [
+        "ui/src/render/Scheduler.ts"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/render-runtime/Scheduler.ts"
+      ],
+      "issue_ids": [
+        "ODX-WKS-018",
+        "ODX-WKS-019"
+      ],
+      "take": "Один RAF loop на окно, dirty surfaces, локальная обработка сбоя painter.",
+      "replace": "Наши бюджеты и lifecycle; при выключении painter показывать ошибку/stale, не сохранять видимость живой панели. High-rate payload не помещается в React state."
+    },
+    {
+      "id": "ET-04",
+      "name": "График: оболочка и lifecycle",
+      "source_files": [
+        "ui/src/chrome/panels/ChartPanel.tsx"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/chart-adapter-lightweight/ChartPanel.tsx"
+      ],
+      "issue_ids": [
+        "ODX-WKS-002"
+      ],
+      "take": "Mount/resize/dispose, конфигурация chart-panel и подходящие controls вокруг Lightweight Charts.",
+      "replace": "Наш RendererPort/SelectionRef/asOf/quality; убрать US-session gap-fill и exec fills. Цены, bins и индикаторы не вычисляются по правилам donor."
+    },
+    {
+      "id": "ET-05",
+      "name": "DOM / визуализация стакана",
+      "source_files": [
+        "ui/src/chrome/panels/LadderPanel.tsx"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/views-flow/DomPanel.tsx",
+        "packages/views-flow/renderers/ladder/"
+      ],
+      "issue_ids": [
+        "ODX-WKS-019"
+      ],
+      "take": "Canvas panel, видимые строки, scroll, размеры/перерисовка; необходимые painter/helpers только после проверки транзитивных импортов.",
+      "replace": "Наш bounded render model и точные units; убрать order overlays/actions и stock-only LULD/SSR. Нельзя импортировать BookStore с чужой семантикой delta."
+    },
+    {
+      "id": "ET-06",
+      "name": "Лента сделок",
+      "source_files": [
+        "ui/src/chrome/panels/TapePanel.tsx"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/views-flow/TapePanel.tsx",
+        "packages/views-flow/renderers/tape/"
+      ],
+      "issue_ids": [
+        "ODX-WKS-019"
+      ],
+      "take": "Отрисовка строк ленты, scroll и визуальные настройки; проверенные зависимые painter/helpers.",
+      "replace": "Идентификатор venue/market/instrument/trade, exchange/receive clocks, unknown side и bounded retention из Odelix. Значимость сделки не наследуется как аналитический факт."
+    },
+    {
+      "id": "ET-07",
+      "name": "Спрос панелей и жизненный цикл подписки",
+      "source_files": [
+        "ui/src/wire/DemandRegistry.ts"
+      ],
+      "mode": "SELECTIVE_PORT",
+      "destination_paths": [
+        "packages/market-stream/PanelDemandRegistry.ts"
+      ],
+      "issue_ids": [
+        "ODX-WKS-007"
+      ],
+      "take": "Ensure/release lifecycle, epoch защиты от запоздалого ответа закрытой панели, reconnect intent.",
+      "replace": "EnsureSymbol/ReleaseSymbol заменяются нашими typed subscription API/grants. Один consumer stream per canonical subscription; не создавать server reducer на панель; bounded pending и cleanup."
+    }
+  ],
+  "out_of_scope": [
+    "Go engine и SQLite journal",
+    "ui/src/App.tsx как composition root",
+    "ui/src/wire/WsClient.ts как transport",
+    "ui/src/data/BookStore.ts и registry.ts как authoritative stores",
+    "WorkspaceStore, подключённый к engine config",
+    "exec/*, broker keys, order tickets, auto-unlock и торговые hotkeys",
+    "US-session interpolation как рыночные данные",
+    "Scanner/Stock Info/News/Watchlist как немедленный новый объём",
+    "новый численный footprint/heatmap/options engine из eTape",
+    "eTape branding, fonts, .github/workflows и внешние AGENTS"
+  ],
+  "library_policy": "Dockview/core и Lightweight Charts подключаются библиотеками, не форкаются. Exact package/lockfile фиксируется в WKS-018/003; обновлять dependency major одновременно с портом запрещено без отдельного scope.",
+  "source_rechecks": [
+    {
+      "path": "ui/src/chrome/linkGroups.ts",
+      "blob": "8d8339bce2ef7597055ece0f5308c8219e67e957",
+      "range": "1-115"
+    },
+    {
+      "path": "ui/src/chrome/PanelFrame.tsx",
+      "blob": "1fe45e5f190ed78e988ffa63aefd164db15fdd51",
+      "range": "1-70"
+    },
+    {
+      "path": "ui/src/chrome/panels/LadderPanel.tsx",
+      "blob": "51849bc9b85b6796be97854ec9f4728133d27bd7",
+      "range": "1-55"
+    }
+  ],
+  "historical_source_review": "../docs/FOUNDATION-DECISION.md#historical-audit",
+  "online_docs_checked": "2026-09-27",
+  "fork_visibility_reference": "https://docs.github.com/en/pull-requests/reference/forks"
+}
